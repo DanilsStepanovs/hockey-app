@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Vārds, uzvārds:</strong>
+  <%= @player.name %>
+</p>
+
+<p>
+  <strong>Spēlētāja numurs:</strong>
+  <%= @player.number %>
+</p>
+
+<p>
+  <strong>Spēlētāja pozīcija:</strong>
+  <%= @player.position %>
+</p>
+
+<p>
+  <strong>Spēlētāja klubs:</strong>
+  <%= @player.club %>
+</p>
+
+<%= link_to 'Labot', edit_player_path(@player) %> |
+<%= link_to 'Atpakaļ', players_path %>

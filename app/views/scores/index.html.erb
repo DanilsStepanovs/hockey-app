@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Matča rezultāts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mājas komanda</th>
+      <th>Viesu komanda</th>
+      <th>Mājas komandas punkti</th>
+      <th>Viesu komandas punkti</th>
+      <th>Papildlaiks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @scores.each do |score| %>
+      <tr>
+        <td><%= score.team.title %></td>
+        <td><%= score.guest_team.title %></td>
+        <td style="text-align: center;"><%= score.points %></td>
+        <td><%= score.guest_points %></td>
+        <td><%= score.add_time %></td>
+        <td><%= link_to "Labot", edit_score_path(score) %>
+        <td><%= link_to "Dzēst", score_path(score), method: :delete, data: { confirm: "Vai esat drošs?" } %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Jauni spēles rezultāti', new_score_path %>

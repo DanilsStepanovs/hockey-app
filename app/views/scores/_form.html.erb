@@ -1,0 +1,43 @@
+<%= form_with(model: score, local: true) do |form| %>
+    <% if score.errors.any? %>
+      <div id="error_explanation">
+        <h2>Kļūdas saglabājot:</h2>
+  
+        <ul>
+        <% score.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+        <%= form.label :team_id, "Mājas spēlējošā komanda" %>
+        <%= form.collection_select(:team_id, Team.all, :id, :title, prompt: true) %>
+    </div>
+  
+    <div class="field">
+        <%= form.label :guest_team_id, "Viesu komanda" %>
+        <%= form.collection_select(:guest_team_id, Team.all, :id, :title, prompt: true) %>
+    </div>
+
+    <div class="field">
+      <%= form.label :points, "Mājas spēlējošās komandas punkti" %>
+      <%= form.number_field :points %>
+    </div>
+
+    <div class="field">
+        <%= form.label :guest_points, "Viesu komandas punkti" %>
+        <%= form.number_field :guest_points %>
+    </div>
+
+    <div class="field">
+        <%= form.label :add_time, "Papildlaiks" %>
+        <%= form.check_box :add_time %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit 'Saglabāt' %>
+    </div>
+
+  <% end %>

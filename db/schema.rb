@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_13_125932) do
+ActiveRecord::Schema.define(version: 2019_03_17_124950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 2019_03_13_125932) do
     t.index ["team_id"], name: "index_players_on_team_id"
   end
 
+  create_table "scores", force: :cascade do |t|
+    t.integer "points"
+    t.integer "guest_points"
+    t.bigint "team_id"
+    t.bigint "guest_team_id"
+    t.boolean "add_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_team_id"], name: "index_scores_on_guest_team_id"
+    t.index ["team_id"], name: "index_scores_on_team_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "title"
     t.string "code"
@@ -34,4 +46,6 @@ ActiveRecord::Schema.define(version: 2019_03_13_125932) do
   end
 
   add_foreign_key "players", "teams"
+  add_foreign_key "scores", "teams"
+  add_foreign_key "scores", "teams", column: "guest_team_id"
 end

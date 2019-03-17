@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Mājas komanda :</strong>
+  <%= @score.team.title %>
+</p>
+
+<p>
+  <strong>Viesu komanda:</strong>
+  <%= @score.guest_team.title %>
+</p>
+
+<p>
+  <strong>Mājas komandas punkti:</strong>
+  <%= @score.points %>
+</p>
+
+<p>
+  <strong>Viesu komandas punkti:</strong>
+  <%= @score.guest_points %>
+</p>
+
+<%= link_to 'Labot', edit_score_path(@score) %> |
+<%= link_to 'Atpakaļ', score_path %>
